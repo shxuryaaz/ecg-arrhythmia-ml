@@ -1,5 +1,7 @@
 # Pulse
 
+Live: https://pulse-ecg-ten.vercel.app
+
 A one-page website for the ECG arrhythmia classifier: the story of the project, an in-browser playground that runs the trained CNN on real heartbeats, and the results.
 
 ## Quickstart

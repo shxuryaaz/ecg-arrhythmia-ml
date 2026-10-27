@@ -59,3 +59,4 @@ No backend, no database, no auth. Static site, deployable to Vercel.
 [QA] Full run as a user on the production build: hero draws, counters tick, gallery fills, playground predicts in under a second, sound plays at tempo, results hover works, phone layout holds. Lighthouse 96/100/100/100. Pass.
 [Shipper] One branch, titan/pulse-site, one commit per ticket. PR open, not merged. Vercel deploy waits for an explicit go.
 [Planner] Shipped: the site in web/, five Lottie mascot states, three illustrations, heartbeat audio, OG card. Cut: the FilmCraft walkthrough (app not installed, optional piece). Next time: pass the type weight to PhotoCraft, and morph the eyes in EffectCraft for a real wake-up instead of a crossfade.
+[Shipper] Deployed on an explicit go: https://pulse-ecg-ten.vercel.app (Vercel project pulse-ecg). All 12 assets answer 200, playground predicts on the live domain.

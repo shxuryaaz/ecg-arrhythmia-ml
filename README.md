@@ -1,5 +1,7 @@
 # ECG arrhythmia classification on MIT-BIH
 
+Website: https://pulse-ecg-ten.vercel.app (in-browser playground, built from `web/`).
+
 Heartbeat classification into the five AAMI classes (N, S, V, F, Q) from single-lead ECG, using the public MIT-BIH Arrhythmia Database. Logistic regression, random forest and a small 1D CNN, evaluated on both a random (intra-patient) split and the de Chazal inter-patient DS1/DS2 split.
 
 ## Run

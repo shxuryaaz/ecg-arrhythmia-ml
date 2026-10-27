@@ -48,3 +48,4 @@ body {
   .section-eyebrow, .section-body { grid-column: 1 / -1; }
 }
 :focus-visible { outline: 2px solid var(--color-red); outline-offset: 3px; }
+@keyframes pump { 0% { transform: scale(1); } 12% { transform: scale(1.08); } 24% { transform: scale(1); } 36% { transform: scale(1.04); } 48% { transform: scale(1); } 100% { transform: scale(1); } }

@@ -76,11 +76,11 @@ export default function Results() {
               <span key={rc + 'l'} className="text-muted self-center">{rc}</span>,
               ...CLASSES.map((pc, j) => {
                 const v = cm[i][j]; const diag = i === j; const share = rowSum[i] ? v / rowSum[i] : 0
-                const bg = diag ? (v > 0 ? '#15171A' : '#F6F4EE') : v === 0 ? '#F6F4EE' : v > maxOff * 0.5 ? '#D4321F' : v > maxOff * 0.1 ? '#D9D5CB' : '#EDEAE2'
+                const bg = diag ? (v > 0 ? '#15171A' : '#F6F4EE') : v === 0 ? '#F6F4EE' : v > maxOff * 0.5 ? '#C62D1B' : v > maxOff * 0.1 ? '#D9D5CB' : '#EDEAE2'
                 const fg = diag && v > 0 ? '#F6F4EE' : v > maxOff * 0.5 && !diag ? '#fff' : '#15171A'
                 return (
                   <button key={rc + pc} onMouseEnter={() => setHover([i, j])} onFocus={() => setHover([i, j])} aria-label={`${v} ${rc} beats predicted ${pc}`}
-                    className="py-2.5 rounded-md transition-transform hover:scale-105" style={{ background: bg, color: fg, outline: hover && hover[0] === i && hover[1] === j ? '2px solid #D4321F' : undefined }}>
+                    className="py-2.5 rounded-md transition-transform hover:scale-105" style={{ background: bg, color: fg, outline: hover && hover[0] === i && hover[1] === j ? '2px solid #C62D1B' : undefined }}>
                     {v.toLocaleString('en-US')}
                   </button>
                 )

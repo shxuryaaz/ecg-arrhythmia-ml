@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { useReveal, CLASSES, CLASS_NAMES, type Cls } from '../lib/motion'
 import { beatPath } from '../lib/wave'
+import { Stack } from '../components/art'
 
 const COUNTS: Record<Cls, number> = { N: 90102, S: 2781, V: 7008, F: 802, Q: 15 }
 const ORDER: Cls[] = ['N', 'V', 'S', 'F', 'Q']
@@ -14,7 +15,10 @@ export default function Data() {
   const max = COUNTS.N
   return (
     <section id="data" className="section !pt-0">
-      <p className="eyebrow section-eyebrow">02 · The data</p>
+      <div className="section-eyebrow flex flex-col gap-8">
+        <p className="eyebrow">02 · The data</p>
+        <motion.div {...useReveal(0.2)} className="hidden md:block max-w-[320px]"><Stack className="w-full h-auto" /></motion.div>
+      </div>
       <div className="section-body">
         <motion.h2 {...useReveal()} className="display text-[36px] md:text-[48px] leading-[1.1]">Nine in ten beats are normal.</motion.h2>
         <motion.p {...useReveal(0.1)} className="text-[18px] leading-[1.6] text-ink-2">MIT-BIH Arrhythmia Database, 44 half-hour recordings, every beat labelled by two cardiologists. Pick a class to see twenty real beats from it, overlaid.</motion.p>
@@ -41,7 +45,7 @@ export default function Data() {
             <svg role="img" aria-label={`Twenty overlaid ${CLASS_NAMES[active]} beats`} viewBox="0 0 280 160" className="w-full h-[160px]">
               <path d="M140 0V160" stroke="#D9D5CB" strokeDasharray="2 6" />
               {gallery?.[active]?.map((b, i) => (
-                <motion.path key={active + i} d={beatPath(b, 280, 160)} fill="none" stroke={active === 'V' ? '#D4321F' : '#15171A'} strokeWidth="1.2" strokeOpacity="0.28"
+                <motion.path key={active + i} d={beatPath(b, 280, 160)} fill="none" stroke={active === 'V' ? '#C62D1B' : '#15171A'} strokeWidth="1.2" strokeOpacity="0.28"
                   initial={reduce ? false : { pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, delay: i * 0.03 }} />
               ))}
               {!gallery && <text x="140" y="84" textAnchor="middle" className="mono" fontSize="12" fill="#6B6760">loading beats…</text>}

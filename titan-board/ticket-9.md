@@ -1,6 +1,6 @@
 # [TITAN] [pulse-site] Optional: walkthrough video (FilmCraft)
 
-Status: Todo
+Status: Cancelled (FilmCraft not installed, optional)
 Owner: [Frontend]
 Branch: titan/pulse-site (one branch, one commit per ticket)
 

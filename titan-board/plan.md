@@ -52,3 +52,10 @@ No backend, no database, no auth. Static site, deployable to Vercel.
 [Planner] Rewrote piece 6. Generator stays as the seed (hand-drawn jitter is the look he liked on hackly), VectorCraft cleans it, EffectCraft rigs and animates it to Lottie, SoundCraft does the heartbeat audio, PhotoCraft does the share card. FilmCraft walkthrough added as an optional piece 9. Install step is three gh release downloads.
 
 [Reviewer] Plan approved. Watch the ONNX wasm load on first visit; if it is over a second on a cold cache the playground needs a skeleton state, not a blank box.
+
+## Final acceptance
+
+[Reviewer] Re-read the ask: proper website, frontend graded most, no login, animations, ArtCraft suite used, mascot. All present. The mascot pumps at the beat's RR, which is the one animation I would show a grader first.
+[QA] Full run as a user on the production build: hero draws, counters tick, gallery fills, playground predicts in under a second, sound plays at tempo, results hover works, phone layout holds. Lighthouse 96/100/100/100. Pass.
+[Shipper] One branch, titan/pulse-site, one commit per ticket. PR open, not merged. Vercel deploy waits for an explicit go.
+[Planner] Shipped: the site in web/, five Lottie mascot states, three illustrations, heartbeat audio, OG card. Cut: the FilmCraft walkthrough (app not installed, optional piece). Next time: pass the type weight to PhotoCraft, and morph the eyes in EffectCraft for a real wake-up instead of a crossfade.

@@ -1,6 +1,6 @@
 # [TITAN] [pulse-site] Hero + story sections
 
-Status: In Progress
+Status: Done
 Owner: [Frontend]
 Branch: titan/pulse-site (one branch, one commit per ticket)
 

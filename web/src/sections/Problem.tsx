@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion'
 import { useReveal, CLASSES, CLASS_NAMES } from '../lib/motion'
+import { Holter } from '../components/art'
 
 export default function Problem() {
   const r = useReveal()
   return (
     <section id="problem" className="section">
-      <p className="eyebrow section-eyebrow">01 · The problem</p>
+      <div className="section-eyebrow flex flex-col gap-8">
+        <p className="eyebrow">01 · The problem</p>
+        <motion.div {...useReveal(0.2)} className="hidden md:block max-w-[300px]"><Holter className="w-full h-auto" /></motion.div>
+      </div>
       <div className="section-body">
         <motion.h2 {...r} className="display text-[36px] md:text-[48px] leading-[1.1]">A cardiologist cannot read 100,000 beats. A model that always says "normal" scores 90%.</motion.h2>
         <motion.p {...useReveal(0.1)} className="text-[18px] leading-[1.6] text-ink-2">Arrhythmias are irregular rhythms. Some are harmless. Ventricular ones can kill. The screening tool is a 24-hour ECG, and the bottleneck is reading it. Automated beat classification is the core problem behind every Holter analyser and wearable monitor, and it has a trap: normal beats dominate, so accuracy lies.</motion.p>

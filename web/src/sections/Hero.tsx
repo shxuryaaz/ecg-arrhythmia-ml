@@ -15,7 +15,7 @@ export default function Hero() {
           </linearGradient>
         </defs>
         <path d="M0 160H1440" stroke="#D9D5CB" strokeWidth="1" strokeDasharray="2 6" />
-        <motion.path d={d} stroke="#D4321F" strokeWidth="2.5" strokeLinejoin="round"
+        <motion.path d={d} stroke="#C62D1B" strokeWidth="2.5" strokeLinejoin="round"
           initial={reduce ? false : { pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2.6, ease: 'easeInOut' }} />
         {!reduce && (
           <motion.rect y="0" width="720" height="320" fill="url(#sweep)" initial={{ x: -760 }} animate={{ x: 1500 }}
@@ -25,7 +25,7 @@ export default function Hero() {
       <div className="relative grid grid-cols-12 gap-x-6 gap-y-8 items-end">
         <div className="col-span-12 lg:col-span-8">
           <motion.p className="eyebrow mb-5" initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 0.8 }}>Biomedical engineering · machine learning</motion.p>
-          <motion.h1 className="display text-[56px] leading-[0.98] md:text-[92px]" initial={reduce ? false : { opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
+          <motion.h1 className="display text-[56px] leading-[0.98] md:text-[92px]" initial={reduce ? false : { y: 30 }} animate={{ y: 0 }} transition={{ delay: 0.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
             Every heartbeat,<br />read by a machine.
           </motion.h1>
         </div>

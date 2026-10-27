@@ -5,6 +5,7 @@ import { beatPath } from '../lib/wave'
 import type { Beat, ModelKey, Prediction } from '../lib/infer'
 const infer = () => import('../lib/infer')
 import Mascot, { type MascotState } from '../components/Mascot'
+import { Split } from '../components/art'
 
 const MASCOT: Record<Cls, MascotState> = { N: 'calm', S: 'early', V: 'alarmed', F: 'puzzled', Q: 'puzzled' }
 
@@ -20,6 +21,8 @@ export default function Playground() {
   const [pred, setPred] = useState<Prediction | null>(null)
   const [tally, setTally] = useState<{ ok: boolean; label: Cls; pred: Cls }[]>([])
   const [error, setError] = useState<string | null>(null)
+  const [sound, setSound] = useState(false)
+  const audio = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     if (!near) return
@@ -38,6 +41,15 @@ export default function Playground() {
     const pool = beats.filter(b => (cls === 'any' || b.label === cls) && b.id !== beat?.id)
     if (pool.length) setBeat(pool[Math.floor(Math.random() * pool.length)])
   }, [beats, filter, beat])
+
+  useEffect(() => {
+    if (!sound || !beat) return
+    audio.current ??= new Audio('/sfx/lubdub.wav')
+    const a = audio.current; const period = Math.min(2, Math.max(0.35, beat.rr_s)) * 1000
+    const tick = () => { a.currentTime = 0; a.play().catch(() => setSound(false)) }
+    tick(); const id = window.setInterval(tick, period)
+    return () => { window.clearInterval(id); a.pause() }
+  }, [sound, beat])
 
   const loading = !ready[model] || !beat
   const state: MascotState = loading || !pred ? 'asleep' : MASCOT[pred.pred]
@@ -61,6 +73,8 @@ export default function Playground() {
               ))}
             </div>
             <div className="flex items-center gap-2.5 text-[13px] text-muted">
+              <button onClick={() => setSound(v => !v)} aria-pressed={sound} title={sound ? 'Mute the heartbeat' : 'Play a heartbeat at this beat\u2019s tempo'}
+                className={`mono text-[12px] py-1.5 px-3 rounded-full border transition-colors ${sound ? 'border-red text-red bg-red-tint' : 'border-line hover:border-ink'}`}>{sound ? 'sound on' : 'sound off'}</button>
               <span>Model trained on</span>
               <div className="flex border border-line rounded-full p-[3px]">
                 {(['seen', 'unseen'] as ModelKey[]).map(k => (
@@ -81,7 +95,7 @@ export default function Playground() {
               <path d="M400 0V300" stroke="#D9D5CB" strokeDasharray="2 6" />
               <AnimatePresence mode="wait">
                 {beat && (
-                  <motion.path key={beat.id} d={beatPath(beat.x, 800, 300, 20)} stroke="#D4321F" strokeWidth="2.5" strokeLinejoin="round"
+                  <motion.path key={beat.id} d={beatPath(beat.x, 800, 300, 20)} stroke="#C62D1B" strokeWidth="2.5" strokeLinejoin="round"
                     initial={reduce ? false : { pathLength: 0, opacity: 0.6 }} animate={{ pathLength: 1, opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: 'easeInOut' }} />
                 )}
               </AnimatePresence>
@@ -136,6 +150,7 @@ export default function Playground() {
             {error && <p className="text-[13px] text-red">{error}</p>}
           </div>
 
+          <Split className="w-full h-auto" />
           <div className="rounded-2xl border border-line p-5 flex flex-col gap-3">
             <p className="text-[13px] text-muted">Your session</p>
             <div className="flex justify-between mono text-[14px]">

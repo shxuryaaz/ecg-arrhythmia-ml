@@ -2,3 +2,5 @@ data/
 .venv/
 __pycache__/
 *.pdf
+web/node_modules/
+web/dist/
